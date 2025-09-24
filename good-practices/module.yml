@@ -1,0 +1,9 @@
+id: good-practices
+name: Good Git Practices
+challenges:
+  - id: ignore
+    name: Ignoring Files
+  - id: branch
+    name: Working with Branches
+  - id: reset
+    name: The Time Machine

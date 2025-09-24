@@ -1,0 +1,7 @@
+id: remote
+name: Remote Repository Interaction
+challenges:
+  - id: clone
+    name: Cloning a Repository
+  - id: sync
+    name: Pushing and Pulling Changes

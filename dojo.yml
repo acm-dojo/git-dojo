@@ -1,0 +1,15 @@
+id: git
+name: Git Dojo
+allow_privileged: false
+type: course
+award:
+  emoji: 🤪
+image: pwncollege/challenge-simple
+modules:
+  - id: local
+  - id: remote
+  - id: good-practices
+  - id: troubleshooting
+mounts:
+  - id: core
+  - id: sudo

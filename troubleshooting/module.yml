@@ -1,0 +1,7 @@
+id: troubleshooting
+name: Troubleshooting
+challenges:
+  - id: undo-commit
+    name: Undoing a Local Commit
+  - id: fix-force-push
+    name: Fixing a Forced Push

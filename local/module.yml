@@ -1,0 +1,7 @@
+id: local
+name: Local Repository Management
+challenges:
+  - id: init
+    name: Initializing a Repository
+  - id: commit
+    name: Staging and Committing Changes
