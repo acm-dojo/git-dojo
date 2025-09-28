@@ -1,14 +1,7 @@
-# Good Git Practices
+# Git 最佳实践
 
-Learn essential Git practices that will make you a more effective developer. This module covers file ignoring, branch management, and using Git as a time machine.
+在掌握了本地仓库管理和远程协作的基础技能后，现在是时候学习一些能够让你成为更专业开发者的 Git 高级技巧了。这个模块将教会你三个在实际项目中不可或缺的重要概念，它们将极大提升你的开发效率和代码质量。
 
-## Challenges
+你将学习如何使用 `.gitignore` 文件来精确控制哪些文件应该被版本控制系统追踪，避免将临时文件、构建产物或敏感信息意外提交到仓库中。接下来，你将掌握分支的强大功能，学会如何同时开发多个功能特性而不相互干扰，这是现代软件开发团队必备的工作方式。
 
-### ignore - Ignoring Files
-Learn how to use `.gitignore` files to exclude files from version control.
-
-### branch - Working with Branches
-Master branch creation, switching, and merging with `git branch` and `git checkout`.
-
-### reset - The Time Machine
-Learn how to navigate through your project's history and reset changes with `git reset`.
+最后，你将学会如何利用 Git 作为"时光机"的能力，通过重置和回退操作来灵活地管理项目历史。这些技能建立在你之前学到的提交、推送、拉取等操作基础之上。

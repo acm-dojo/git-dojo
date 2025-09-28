@@ -1,11 +1,5 @@
-# Remote Repository Interaction
+# 远程仓库协作
 
-Learn how to work with remote repositories. This module covers cloning repositories from remote sources and synchronizing changes between local and remote repositories.
+掌握了本地仓库的管理技能后，现在你将步入 Git 最强大的领域之一：远程协作。这个模块将教会你如何与托管在 GitHub、GitLab 等平台上的远程仓库进行交互，真正体验现代软件开发的协作方式。
 
-## Challenges
-
-### clone - Cloning a Repository
-Learn how to clone repositories from GitHub and other remote sources.
-
-### sync - Pushing and Pulling Changes
-Master the workflow of synchronizing changes with remote repositories using `git push` and `git pull`.
+你将学习如何从远程位置克隆现有的项目到本地，这是参与开源项目或加入新团队时最常见的第一步操作。更重要的是，你将掌握本地仓库与远程仓库之间的同步机制，学会如何将你的本地更改推送到远程仓库与他人分享，以及如何从远程仓库拉取其他开发者的更新。

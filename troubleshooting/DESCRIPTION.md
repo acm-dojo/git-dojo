@@ -1,13 +1,3 @@
-# Troubleshooting - Oh Shit, Git!
+# Git 问题诊断与修复
 
-Learn how to recover from common Git mistakes. This module covers undoing commits and fixing problematic force pushes.
-
-## Challenges
-
-### Updating a Commit
-
-Learn how to modify the most recent commit using `git commit --amend`. 
-
-### Resolving Merge Conflicts
-
-Learn how to resolve merge conflicts that occur when Git cannot automatically merge changes from different branches.
+在实际开发中，即使是最有经验的开发者也会遇到各种意外情况。这个最终模块将教会你如何优雅地处理那些让人头疼的 Git 问题，让你在面对"Oh Shit"的时刻能够冷静应对。
