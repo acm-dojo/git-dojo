@@ -40,20 +40,27 @@ testcases/
 > ``` bash
 > # 创建两个日志文件
 > touch a.log b.log
+>
+>
 > # 将 a.log 添加到暂存区，使其变为“已跟踪”状态
 > git add a.log
+>
 > # 查看当前状态，a.log 已暂存，b.log 未跟踪
 > git status
-> # 输出（有部分省略）:
+>
+> # 输出（部分省略）:
 > Changes to be committed:
 >        new file:   a.log
 >
 > Untracked files:
 >        b.log
+>
 > # 创建 .gitignore 文件，忽略所有 .log 文件
 > echo "*.log" >> .gitignore
+>
 > # 再次查看状态
 > git status
+>
 > # 输出:
 > Changes to be committed:
 >         new file:   a.log  
@@ -84,7 +91,8 @@ testcases/
   * `*` 匹配零个或多个字符。
     ```gitignore
     # 忽略所有以 .log 结尾的文件
-    *.log   
+    *.log 
+
     # 忽略所有以 .o 结尾的文件
     *.o
     ```
@@ -96,26 +104,25 @@ testcases/
   * `**` 匹配任意中间目录。
     ```gitignore
     # 忽略任何目录下名为 logs 的文件夹
-    **/logs/   
+    **/logs/
+
     # 忽略任何目录下以 .o 结尾的文件
     **/*.o
     ```
 
 4.  **否定模式 (例外规则)**: 在模式前加上感叹号 `!` 表示不忽略，可用于为一个更广泛的忽略规则设置例外。
     ```gitignore
-    # 忽略所有 .log 文件
+    # 忽略所有 .log 文件...
     *.log
-    # 但 important.log 文件除外
+
+    # ...但 important.log 文件除外
     !important.log
     ```
     >**注意**：如果一个文件的父目录已经被忽略，那么你无法通过否定模式来单独保留这个文件。例如，`build/` 被忽略后，`!build/main.o` 是无效的。
 
-
 ---
 
-
 ## RECAP
-
 
 ### 核心概念
 
