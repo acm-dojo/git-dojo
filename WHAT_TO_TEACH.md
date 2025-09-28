@@ -1,0 +1,17 @@
+# Course Structure
+- setup (Setting Up Git)
+  - 1. config (Configuring Git) [`git config`]
+- local (Local Repository Management)
+  - 2. init (Initializing a Repository) [`git init`]
+  - 3. commit (Staging and Committing Changes) [`git add`, `git commit`]
+  - 4. status (Checking the Status) [`git status`, `git diff`]
+- remote (Remote Repository Interaction)
+  - 5. clone (Cloning a Repository) [`git clone`]
+  - 6. sync (Pushing and Pulling Changes) [`git pull`, `git push`]
+- good-practices (Good Git Practices)
+  - 7. ignore (Ignoring Files) [`.gitignore`]
+  - 8. branch (Working with Branches) [`git branch`, `git checkout`, `git stash`]
+  - 9. reset (The Time Machine) [`git reset`]
+- troubleshooting (Oh Shit, Git)
+  - 10. update-commit (Updating a Local Commit) [`git commit --amend`]
+  - 11. resolve-conflicts (Resolving Merge Conflicts) [`git merge`, `git mergetool`]
