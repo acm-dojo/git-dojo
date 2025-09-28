@@ -12,6 +12,6 @@
   - 7. ignore (Ignoring Files) [`.gitignore`]
   - 8. branch (Working with Branches) [`git branch`, `git checkout`, `git stash`]
   - 9. reset (The Time Machine) [`git reset`]
-- troubleshooting (Oh Shit, Git)
+- oh-shit (Oh Shit, Git)
   - 10. update-commit (Updating a Local Commit) [`git commit --amend`]
   - 11. resolve-conflicts (Resolving Merge Conflicts) [`git merge`, `git mergetool`]

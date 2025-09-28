@@ -10,7 +10,7 @@ modules:
   - id: local
   - id: remote
   - id: good-practices
-  - id: troubleshooting
+  - id: oh-shit
 mounts:
   - id: core
   - id: sudo

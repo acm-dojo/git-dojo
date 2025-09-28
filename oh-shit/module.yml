@@ -1,5 +1,5 @@
-id: troubleshooting
-name: Troubleshooting
+id: oh-shit
+name: Oh Shit, Git
 challenges:
   - id: update-commit
     name: Updating a Commit
