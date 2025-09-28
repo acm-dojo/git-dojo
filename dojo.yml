@@ -6,6 +6,7 @@ award:
   emoji: 🤪
 image: pwncollege/challenge-simple
 modules:
+  - id: setup
   - id: local
   - id: remote
   - id: good-practices

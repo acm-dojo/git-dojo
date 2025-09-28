@@ -1,0 +1,5 @@
+id: setup
+name: Setup and Installation
+challenges:
+  - id: config
+    name: Configuring Git
