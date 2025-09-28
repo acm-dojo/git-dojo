@@ -4,8 +4,10 @@ Learn how to recover from common Git mistakes. This module covers undoing commit
 
 ## Challenges
 
-### undo-commit - Undoing a Local Commit
-Learn how to undo commits that haven't been pushed yet using `git reset HEAD~1`.
+### Updating a Commit
 
-### fix-force-push - Fixing a Forced Push
-Learn how to recover from and fix the aftermath of problematic force pushes.
+Learn how to modify the most recent commit using `git commit --amend`. 
+
+### Resolving Merge Conflicts
+
+Learn how to resolve merge conflicts that occur when Git cannot automatically merge changes from different branches.
