@@ -58,10 +58,6 @@ No commits yet
 nothing to commit (create/copy files and use "git add" to track)
 ```
 
----
-
-## 理解 .git 目录
-
 `.git` 目录是 Git 的核心，包含了：
 - `HEAD`: 指向当前分支的指针
 - `config`: 仓库的配置信息
@@ -69,10 +65,6 @@ nothing to commit (create/copy files and use "git add" to track)
 - `refs/`: 存储分支和标签的引用
 
 > ⚠️ **警告**: 永远不要手动修改 `.git` 目录中的文件！这可能会损坏你的仓库。
-
----
-
-## 实践示例
 
 让我们创建一个简单的项目并初始化 Git 仓库：
 
