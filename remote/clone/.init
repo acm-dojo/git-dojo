@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eou pipefail
+
 /mnt/sudo/setup.sh
 /mnt/site-packages/setup_packages.sh
 
@@ -8,7 +10,7 @@ chmod +x /challenge/submit
 # Setup the git proxy:
 # https://github.com/acm-dojo/git-sample-repo.git -> /opt/git-sample-repo/
 
-mv -r /challenge/git-sample-repo/ /opt/git-sample-repo/
+mv /challenge/git-sample-repo /opt/git-sample-repo
 chown hacker:hacker -R /opt/git-sample-repo/
 
 sudo -u hacker git config --global url."/opt/git-sample-repo/".insteadOf https://github.com/acm-dojo/git-sample-repo.git
