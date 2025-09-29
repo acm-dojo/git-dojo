@@ -1,3 +1,0 @@
-#!/mnt/sudo/bash
-
-/run/dojo/bin/python /mnt/core/main.py --card
