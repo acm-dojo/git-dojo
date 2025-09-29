@@ -1,0 +1,13 @@
+name: Update Dojo
+
+on: push
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: pwncollege/dojo-update@v1
+        with:
+          site: ${{ vars.DOJO_BASE_URL }}
+          dojo: ${{ secrets.DOJO_REFERENCE_ID }}
+          update_code: ${{ secrets.UPDATE_CODE }}
