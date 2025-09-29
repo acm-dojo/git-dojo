@@ -12,5 +12,5 @@ modules:
   - id: good-practices
   - id: oh-shit
 mounts:
-  - id: core
   - id: sudo
+  - id: site-packages
