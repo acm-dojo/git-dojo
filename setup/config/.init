@@ -1,4 +1,6 @@
 #!/bin/bash
 
+chmod +x /mnt/site-packages/setup_packages.sh
+
 /mnt/sudo/setup.sh
 /mnt/site-packages/setup_packages.sh
