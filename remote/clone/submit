@@ -1,0 +1,27 @@
+#!/mnt/sudo/python
+
+from git import Repo
+import os
+
+repo_path = os.path.abspath("/home/hacker/git-sample-repo")
+repo_origin_urls = ["https://github.com/acm-dojo/git-sample-repo.git", "git@github.com:acm-dojo/git-sample-repo.git"]
+
+if not os.path.exists(repo_path):
+    raise FileNotFoundError("Repository path does not exist.")
+
+repo = Repo(repo_path)  # if the repo is not a git repo, this will raise an error
+
+print(f"Repository at {repo_path} is valid.")
+
+origin_url = repo.remotes.origin.url
+
+print(f"The remote of the repository is: {origin_url}")
+
+if origin_url not in repo_origin_urls:
+    raise ValueError("! Expected URL: https://github.com/acm-dojo/git-sample-repo.git. Please clone the repository correctly!")
+
+print("Success! You have correctly cloned the repository. Here is your flag:")
+
+with open("/flag", "r") as flag_file:
+    flag = flag_file.read().strip()
+    print(flag)
