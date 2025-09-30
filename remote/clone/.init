@@ -14,6 +14,5 @@ mv /challenge/git-sample-repo-literal /opt/git-sample-repo
 mv /opt/git-sample-repo/.raw.git /opt/git-sample-repo/.git  # unfreeze the repo
 chown hacker:hacker -R /opt/git-sample-repo/
 
-sudo -u hacker git config --global url."/opt/git-sample-repo/".insteadOf "https://github.com/acm-dojo/"
-sudo -u hacker git config --global url."/opt/git-sample-repo/".insteadOf "git@github.com:acm-dojo/"
-sudo -u hacker git config --global url."/opt/git-sample-repo/".insteadOf "github.com/acm-dojo/"
+sudo -u hacker git config --global url."/opt/git-sample-repo/".insteadOf "https://github.com/acm-dojo/git-sample-repo"
+sudo -u hacker git config --global url."/opt/git-sample-repo/".insteadOf "git@github.com:acm-dojo/git-sample-repo"
