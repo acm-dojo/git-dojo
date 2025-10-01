@@ -1,0 +1,46 @@
+#!/mnt/sudo/python
+
+import os
+from git import Repo  # type: ignore
+from git.exc import InvalidGitRepositoryError
+
+REPO_PATH = "/home/hacker/dojo-init"
+EXPECTED_HEAD_REF = "ref: refs/heads/main"
+README_PATH = os.path.join(REPO_PATH, "README.md")
+
+if not os.path.isdir(REPO_PATH):
+    raise FileNotFoundError("目录 ~/dojo-init 不存在。请按照说明创建工作目录。")
+
+try:
+    repo = Repo(REPO_PATH)
+except InvalidGitRepositoryError as exc:
+    raise RuntimeError("~/dojo-init 还不是一个 Git 仓库。别忘了运行 git init！") from exc
+
+head_file = os.path.join(repo.git_dir, "HEAD")
+with open(head_file, "r", encoding="utf-8") as head_fp:
+    head_content = head_fp.read().strip()
+
+if head_content != EXPECTED_HEAD_REF:
+    raise ValueError("默认分支不是 main。使用 git init -b main 来设置初始分支。")
+
+main_ref = os.path.join(repo.git_dir, "refs", "heads", "main")
+if os.path.exists(main_ref):
+    raise ValueError("检测到 main 分支已经有提交。这个练习只需要初始化仓库，不需要创建提交。")
+
+if not os.path.isfile(README_PATH):
+    raise FileNotFoundError("没有找到 README.md。请按照步骤创建并写入内容。")
+
+with open(README_PATH, "r", encoding="utf-8") as readme_fp:
+    first_line = readme_fp.readline().strip()
+
+if first_line != "# dojo-init":
+    raise ValueError("README.md 的第一行应为 '# dojo-init'。请检查文件内容。")
+
+untracked = set(repo.untracked_files)
+if "README.md" not in untracked:
+    raise ValueError("README.md 已被追踪或提交。本练习要求保持它处于未追踪状态。")
+
+print("仓库初始化完成，没毛病！")
+
+with open("/flag", "r", encoding="utf-8") as flag_file:
+    print(flag_file.read().strip())
