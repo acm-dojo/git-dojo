@@ -6,6 +6,9 @@
 chmod +x /challenge/submit
 
 sudo -u hacker bash <<'EOF'
+
+export PATH="/run/dojo/bin:$PATH"
+
 set -euo pipefail
 rm -rf /home/hacker/dojo-conflict
 mkdir -p /home/hacker/dojo-conflict
