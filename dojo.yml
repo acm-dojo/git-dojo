@@ -1,6 +1,6 @@
 id: git
 name: Git Dojo
-allow_privileged: false
+allow_privileged: true # for debugging
 type: course
 award:
   emoji: 🤪
