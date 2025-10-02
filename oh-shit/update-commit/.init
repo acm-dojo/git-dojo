@@ -1,0 +1,28 @@
+#!/bin/bash
+
+/mnt/sudo/setup.sh
+/mnt/site-packages/setup_packages.sh
+
+chmod +x /challenge/submit
+
+sudo -u hacker bash <<'EOF'
+set -euo pipefail
+rm -rf /home/hacker/dojo-amend
+mkdir -p /home/hacker/dojo-amend
+cd /home/hacker/dojo-amend
+
+git init -b main >/dev/null
+
+git config user.name "Git Dojo"
+git config user.email "dojo@example.com"
+
+echo "# Please change this line" > README.md
+
+git add README.md
+GIT_AUTHOR_NAME="Git Dojo" GIT_AUTHOR_EMAIL="dojo@example.com" \
+GIT_COMMITTER_NAME="Git Dojo" GIT_COMMITTER_EMAIL="dojo@example.com" \
+  git commit -m "this commit message is not correct" >/dev/null
+
+EOF
+
+sudo -u hacker bash -lc 'cd /home/hacker/dojo-amend && git rev-parse HEAD' > /challenge/.amend_initial_sha

@@ -1,0 +1,72 @@
+#!/mnt/sudo/python
+
+import os
+from git import Repo  # type: ignore
+
+REPO_PATH = "/home/hacker/dojo-conflict"
+MAIN_SHA_RECORD = "/challenge/.resolve_main_before_merge"
+FEATURE_SHA_RECORD = "/challenge/.resolve_feature_head"
+EXPECTED_LINES = [
+    "Chapter 1: Arrival",
+    "Chapter 2: Tension builds",
+    "Chapter 3: Main timeline update.",
+    "Chapter 3 (feature): Alternate timeline reveal.",
+    "Chapter 4: Cliffhanger",
+]
+
+if not os.path.isdir(REPO_PATH):
+    raise FileNotFoundError("没有找到 ~/dojo-conflict 仓库。请按照说明进入正确目录。")
+
+repo = Repo(REPO_PATH)
+
+if repo.head.is_detached:
+    raise RuntimeError("HEAD 处于分离状态，请确保你在 main 分支上提交合并。")
+
+if repo.active_branch.name != "main":
+    raise ValueError("请在 main 分支上完成合并后再提交验证。")
+
+if not os.path.exists(MAIN_SHA_RECORD) or not os.path.exists(FEATURE_SHA_RECORD):
+    raise FileNotFoundError("缺少初始化记录文件，请重新进入挑战环境。")
+
+with open(MAIN_SHA_RECORD, "r", encoding="utf-8") as main_file:
+    original_main_sha = main_file.read().strip()
+
+with open(FEATURE_SHA_RECORD, "r", encoding="utf-8") as feature_file:
+    feature_sha = feature_file.read().strip()
+
+current_main_commit = repo.head.commit
+
+if current_main_commit.hexsha == original_main_sha:
+    raise ValueError("main 分支尚未产生新的合并提交。请先解决冲突并完成 merge。")
+
+parents = current_main_commit.parents
+if len(parents) != 2:
+    raise ValueError("最后一次提交不是一次合并提交。请确保通过 git merge 完成操作。")
+
+parent_shas = {parent.hexsha for parent in parents}
+if original_main_sha not in parent_shas or feature_sha not in parent_shas:
+    raise ValueError("合并提交的父提交不正确。请确保是把 feature/story 合并到 main。")
+
+story_path = os.path.join(REPO_PATH, "story.txt")
+if not os.path.isfile(story_path):
+    raise FileNotFoundError("story.txt 不存在。请确认你在正确的仓库中操作。")
+
+with open(story_path, "r", encoding="utf-8") as story_file:
+    lines = [line.rstrip("\n") for line in story_file.readlines()]
+
+if lines != EXPECTED_LINES:
+    raise ValueError("story.txt 的内容与期望不符。请删除冲突标记并保留两套剧情。")
+
+with open(story_path, "r", encoding="utf-8") as story_file:
+    content = story_file.read()
+
+if any(marker in content for marker in ("<<<<<<<", "=======", ">>>>>>>")):
+    raise ValueError("仍然存在冲突标记，请完整解决合并冲突后再提交。")
+
+if repo.is_dirty(untracked_files=True):
+    raise RuntimeError("工作区不干净。请确保所有冲突文件已经添加并完成提交。")
+
+print("冲突解决得漂亮！")
+
+with open("/flag", "r", encoding="utf-8") as flag_file:
+    print(flag_file.read().strip())
