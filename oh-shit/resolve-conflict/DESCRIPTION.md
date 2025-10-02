@@ -141,3 +141,24 @@ Git 上面提到的 `--ff-only`, `--no-ff`，`--squash` 是“合并策略”。
 - rebase vs merge：
     - rebase：历史更线性；不要对已共享分支重写历史。
     - merge：保留自然历史；可能更“分叉”，但安全。
+
+---
+
+## 任务卡
+
+我们已经在 `~/dojo-conflict` 中准备了一份“正在撰写的小说”。`main` 分支和 `feature/story` 分支分别对第三章做了不同修改。当你尝试把特性分支合并回 `main` 时，一定会遇到冲突。
+
+请进入练习仓库：`cd ~/dojo-conflict`，执行 `git merge feature/story`，观察 Git 报出的冲突信息。
+
+打开 `story.txt`，消除冲突标记，把内容整理为：
+    ```
+    Chapter 1: Arrival
+    Chapter 2: Tension builds
+    Chapter 3: Main timeline update.
+    Chapter 3 (feature): Alternate timeline reveal.
+    Chapter 4: Cliffhanger
+    ```
+
+使用 `git add story.txt` 标记冲突已解决，并通过 `git commit` 创建合并提交（默认的 Merge 信息即可）。
+
+确认工作区干净、没有残留的冲突标记后，运行 `/challenge/submit` 验证结果。
