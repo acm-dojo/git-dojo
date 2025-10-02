@@ -1,0 +1,52 @@
+#!/mnt/sudo/python
+
+import os
+from git import Repo  # type: ignore
+
+REPO_PATH = "/home/hacker/dojo-amend"
+INITIAL_SHA_RECORD = "/challenge/.amend_initial_sha"
+EXPECTED_MESSAGE = "Add release readiness checklist"
+EXPECTED_LINES = [
+    "# ACM Dojo"
+]
+
+if not os.path.isdir(REPO_PATH):
+    raise FileNotFoundError("没有找到 ~/dojo-amend 仓库。请按照说明操作。")
+
+repo = Repo(REPO_PATH)
+
+commits = list(repo.iter_commits("main"))
+if len(commits) != 1:
+    raise ValueError("仓库中应该只有一个提交。请使用 commit --amend 更新最后一次提交，而不是创建新的提交。")
+
+commit = commits[0]
+
+if commit.message.strip() != EXPECTED_MESSAGE:
+    raise ValueError("提交信息不匹配。请在 amend 时把 message 改成 'feat: I love dojo'。")
+
+readme_path = os.path.join(REPO_PATH, "README.md")
+if not os.path.isfile(readme_path):
+    raise FileNotFoundError("README.md 不存在。请确认你在正确的仓库中操作。")
+
+with open(readme_path, "r", encoding="utf-8") as readme_file:
+    lines = [line.rstrip("\n") for line in readme_file.readlines()]
+
+if lines != EXPECTED_LINES:
+    raise ValueError("README.md 的内容不符合要求。")
+
+if repo.is_dirty(untracked_files=True):
+    raise RuntimeError("工作区不干净。请确保所有更改都已经包含在修改后的提交中。")
+
+if not os.path.exists(INITIAL_SHA_RECORD):
+    raise FileNotFoundError("缺少初始化记录文件，请重新打开挑战环境。")
+
+with open(INITIAL_SHA_RECORD, "r", encoding="utf-8") as sha_file:
+    initial_sha = sha_file.read().strip()
+
+if commit.hexsha == initial_sha:
+    raise ValueError("检测到提交没有变化。请在 amend 时真正更新提交内容。")
+
+print("提交修改得非常到位！")
+
+with open("/flag", "r", encoding="utf-8") as flag_file:
+    print(flag_file.read().strip())
