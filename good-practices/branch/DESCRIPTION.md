@@ -54,6 +54,38 @@ git checkout previous_branch # 切换回之前的分支
 git stash pop # 看！这就是栈！push 进去的东西 pop 出来
 ```
 
+## RECAP
+
+在本章中，你学习了如何利用分支隔离工作并安全地合并回主干。
+
+### 核心概念
+
+- **分支可以理解成平行时间线**：在不打扰 `main` 的情况下开发新功能或修复问题。
+- **分支命名规范**：用 `feature/`、`bugfix/` 等前缀，类似于 commit message 的规范。
+- **临时存储工作区**：`git stash` 用栈的方式保存未提交的改动，方便切换分支。
+
+### 关键命令
+
+- `git branch <branch-name>`：创建新分支
+- `git checkout <branch-name>`：切换到指定分支
+- `git checkout -b <branch-name>`：创建并切换分支
+- `git merge <branch-name>`：把目标分支合并进当前分支
+- `git stash push -m "<note>"` / `git stash pop`：暂存并恢复未提交更改
+
+### 命令速查表
+
+- `git branch feature/ui`：新建 `feature/ui` 分支
+- `git checkout -b feature/ui`：新建并切换到 `feature/ui`
+- `git checkout feature/ui`：进入该分支继续开发
+- `git checkout main && git merge feature/ui`：返回 `main` 并完成合并
+- `git stash push -m "WIP logs"`：保存未完成的工作以便切换
+- `git stash list` / `git stash pop`：查看并取回暂存的更改
+
+### 一些 Tips
+
+- 合并前记得回到目标分支（通常是 `main`）。
+- 分支上的提交和主分支完全一样，放心使用 `git add` / `git commit`。
+
 ---
 
 ## 任务卡
