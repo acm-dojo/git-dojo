@@ -4,9 +4,8 @@
 /mnt/site-packages/setup_packages.sh
 
 chmod +x /challenge/submit
+export PATH="/run/dojo/bin:$PATH"
 
-# Prepare practice repository for the branch challenge
-sudo -u hacker bash <<'EOF'
 set -euo pipefail
 rm -rf /home/hacker/dojo-branch
 mkdir -p /home/hacker/dojo-branch
@@ -31,6 +30,7 @@ GIT_COMMITTER_NAME="Git Dojo" GIT_COMMITTER_EMAIL="dojo@example.com" \
 cat <<'TXT' >> progress.md
 Day 3: Draft branch workflow notes. (stash me!)
 TXT
-EOF
 
-sudo -u hacker bash -lc 'cd /home/hacker/dojo-branch && git rev-parse HEAD' > /challenge/.branch_main_initial_sha
+git rev-parse HEAD > /challenge/.branch_main_initial_sha
+
+chown -R hacker:hacker /home/hacker/dojo-branch
