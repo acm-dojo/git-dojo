@@ -6,8 +6,9 @@
 chmod +x /challenge/submit
 
 sudo -u hacker bash <<'EOF'
-
-export PATH="/run/dojo/bin:$PATH"
+touch /home/hacker/debug.log # DEBUG USE ONLY
+echo "The PATH for hacker is: $PATH" > /home/hacker/debug.log
+echo "The location of git is: $(which git)" >> /home/hacker/debug.log
 
 set -euo pipefail
 rm -rf /home/hacker/dojo-conflict
@@ -15,6 +16,7 @@ mkdir -p /home/hacker/dojo-conflict
 cd /home/hacker/dojo-conflict
 
 git init -b main >/dev/null
+echo "Exit code of 'git init' was: $?" >> /home/hacker/debug.log
 
 git config user.name "Git Dojo"
 git config user.email "dojo@example.com"
