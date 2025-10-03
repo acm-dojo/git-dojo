@@ -7,9 +7,8 @@ chmod +x /challenge/submit
 
 export PATH="/run/dojo/bin:$PATH"
 
-su -l hacker -c '
+su -l hacker <<'EOF'
 set -euo pipefail
-
 rm -rf /home/hacker/dojo-conflict
 mkdir -p /home/hacker/dojo-conflict
 cd /home/hacker/dojo-conflict
@@ -19,7 +18,7 @@ git init -b main >/dev/null
 git config user.name "Git Dojo"
 git config user.email "dojo@example.com"
 
-cat <<'"'"'TXT'"'"' > story.txt
+cat <<'TXT' > story.txt
 Chapter 1: Arrival
 Chapter 2: Tension builds
 Chapter 3: TBD
@@ -33,7 +32,7 @@ GIT_COMMITTER_NAME="Git Dojo" GIT_COMMITTER_EMAIL="dojo@example.com" \
 git branch feature/story
 
 git switch feature/story >/dev/null
-cat <<'"'"'TXT'"'"' > story.txt
+cat <<'TXT' > story.txt
 Chapter 1: Arrival
 Chapter 2: Tension builds
 Chapter 3: Alternate timeline reveal.
@@ -43,14 +42,14 @@ TXT
 git commit -am "feature: add alternate twist" >/dev/null
 
 git switch main >/dev/null
-cat <<'"'"'TXT'"'"' > story.txt
+cat <<'TXT' > story.txt
 Chapter 1: Arrival
 Chapter 2: Tension builds
 Chapter 3: Main timeline update.
 TXT
 
 git commit -am "main: tighten chapter three" >/dev/null
-'
+EOF
 
 sudo -u hacker bash -lc 'cd /home/hacker/dojo-conflict && git rev-parse HEAD' > /challenge/.resolve_main_before_merge
 sudo -u hacker bash -lc 'cd /home/hacker/dojo-conflict && git rev-parse feature/story' > /challenge/.resolve_feature_head
