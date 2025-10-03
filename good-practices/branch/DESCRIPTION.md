@@ -42,3 +42,28 @@ hotfix/<hotfix-description>  # 紧急修复
 ![](https://cdn.nodeimage.com/i/mi15aop6o7LEGqVSBGKT9jaEDkayu9Nk.png)
 
 左边是你要合并的分支，右边是目标分支。这与你本地的操作是类似的。
+
+最后，我还要介绍一下 `git stash` 命令。当然，你们现在不用掌握它，不过知道一下总归是好的。当你在运行 `git checkout` 切换分支时，如果工作区有未提交的更改，Git 会阻止你切换分支。这时你可以使用 `git stash` 命令将未提交的更改暂存起来，等切换到目标分支后再恢复。在你们看到这里的时候，大概率助教已经给你们讲了 栈 (Stack) 这个数据结构~~（好吧可能他也只讲了讲STL的栈怎么用吧）~~。事实上，`git stash` 就是利用栈的特性来保存和恢复工作区的状态。具体而言：
+
+```bash
+git stash push -m "some unsaved work" # 缓存这些未提交的更改
+git checkout some_new_branch # 切换到新分支
+...
+# 当你新分支上的工作完成后
+git checkout previous_branch # 切换回之前的分支
+git stash pop # 看！这就是栈！push 进去的东西 pop 出来
+```
+
+---
+
+## 任务卡
+
+现在轮到你来实践一次分支协作流程了！我们已经在 `~/dojo-branch` 中准备好一个仓库，其中 `main` 分支上有一份日常进度日志，但第三天的记录还在草稿状态，且目前保持在未提交的工作区里。
+
+请按照下面的步骤完成练习：
+
+进入目录：`cd ~/dojo-branch`，创建并切换到新分支，名字叫 `feature/progress-log`。
+
+打开 `progress.md`，新增一行 `Day 3: learned branch.`。使用 `git add` 和 `git commit` 提交更改，提交信息为 `branch: ACM Dojo`。
+
+运行 `/challenge/submit` 检查结果。

@@ -27,10 +27,6 @@ GIT_AUTHOR_NAME="Git Dojo" GIT_AUTHOR_EMAIL="dojo@example.com" \
 GIT_COMMITTER_NAME="Git Dojo" GIT_COMMITTER_EMAIL="dojo@example.com" \
   git commit -m "Log first two days" >/dev/null
 
-cat <<'TXT' >> progress.md
-Day 3: Draft branch workflow notes. (stash me!)
-TXT
-
 git rev-parse HEAD > /challenge/.branch_main_initial_sha
 
 chown -R hacker:hacker /home/hacker/dojo-branch
