@@ -20,7 +20,7 @@ then
     exit 1
 fi
 
-sudo -u hacker bash <<'EOF'
+su hacker
 
 export PATH="/run/dojo/bin:$PATH"
 
@@ -70,7 +70,7 @@ Chapter 3: Main timeline update.
 TXT
 
 git commit -am "main: tighten chapter three" >/dev/null
-EOF
 
-sudo -u hacker bash -lc 'cd /home/hacker/dojo-conflict && git rev-parse HEAD' > /challenge/.resolve_main_before_merge
-sudo -u hacker bash -lc 'cd /home/hacker/dojo-conflict && git rev-parse feature/story' > /challenge/.resolve_feature_head
+
+# sudo -u hacker bash -lc 'cd /home/hacker/dojo-conflict && git rev-parse HEAD' > /challenge/.resolve_main_before_merge
+# sudo -u hacker bash -lc 'cd /home/hacker/dojo-conflict && git rev-parse feature/story' > /challenge/.resolve_feature_head
