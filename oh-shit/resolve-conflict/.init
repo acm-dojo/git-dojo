@@ -7,7 +7,8 @@ chmod +x /challenge/submit
 
 export PATH="/run/dojo/bin:$PATH"
 
-su -l hacker <<'EOF'
+su hacker <<'EOF'
+export PATH="/run/dojo/bin:$PATH"
 set -euo pipefail
 rm -rf /home/hacker/dojo-conflict
 mkdir -p /home/hacker/dojo-conflict
@@ -51,5 +52,5 @@ TXT
 git commit -am "main: tighten chapter three" >/dev/null
 EOF
 
-sudo -u hacker bash -lc 'cd /home/hacker/dojo-conflict && git rev-parse HEAD' > /challenge/.resolve_main_before_merge
-sudo -u hacker bash -lc 'cd /home/hacker/dojo-conflict && git rev-parse feature/story' > /challenge/.resolve_feature_head
+su hacker -c 'export PATH="/run/dojo/bin:$PATH"; cd /home/hacker/dojo-conflict && git rev-parse HEAD' > /challenge/.resolve_main_before_merge
+su hacker -c 'export PATH="/run/dojo/bin:$PATH"; cd /home/hacker/dojo-conflict && git rev-parse feature/story' > /challenge/.resolve_feature_head
