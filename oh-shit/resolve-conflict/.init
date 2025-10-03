@@ -5,12 +5,17 @@
 
 chmod +x /challenge/submit
 
+export PATH="/run/dojo/bin:$PATH"
+
 touch debug.log # DEBUG USE ONLY
 echo "The location of sudo is: $(which sudo)" > debug.log
 echo "The location of bash is: $(which bash)" >> debug.log
 echo "The location of git is: $(which git)" >> debug.log
 
 sudo -u hacker bash <<'EOF'
+
+export PATH="/run/dojo/bin:$PATH"
+
 touch /home/hacker/debug.log # DEBUG USE ONLY
 echo "The PATH for hacker is: $PATH" > /home/hacker/debug.log
 echo "The location of git is: $(which git)" >> /home/hacker/debug.log
