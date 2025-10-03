@@ -1,0 +1,60 @@
+#!/mnt/sudo/python
+
+from git import Repo
+import difflib
+
+# Step 1: verify that /home/hacker/git-sample-dojo has pulled changes and have other commits ahead
+
+repo_path = '/home/hacker/git-sample-dojo'
+repo = Repo(repo_path)
+
+if repo.is_dirty():
+    print("Repository has uncommitted changes. Please commit them before proceeding.")
+    exit(1)
+
+commits = list(repo.iter_commits('main'))
+
+# After git pull, there should be at least 3 commits (initial commit + 2 new commits)
+if len(commits) < 3 or commits[2].message.strip() != "refactor: change the old Greenpath lore to the famous elegy from Monomon the Teacher":
+    print("Please ensure that you have pulled changes from origin/main")
+    exit(1)
+
+# Ensure that the user has made changes to 'Elegy for Hallownest.md' since
+
+file_path = f'{repo_path}/Elegy for Hallownest.md'
+with open(file_path, 'r') as file:
+    content = file.read()
+
+elegy = """\
+In wilds beyond they speak your name with reverence and regret,
+
+For none could tame our savage souls yet you the challenge met,
+
+Under palest watch, you taught, we changed, base instincts were redeemed,
+
+A world you gave to bug and beast as they had never dreamed.
+"""
+
+if elegy not in content:
+    print("Please ensure that you have modified 'Elegy for Hallownest.md' with the new elegy text.")
+    # Show diff for user
+    diff = difflib.unified_diff(
+        content.splitlines(keepends=True),
+        elegy.splitlines(keepends=True),
+        fromfile='/hacker/git-sample-dojo/Elegy for Hallownest.md',
+        tofile='Expected Elegy Text'
+    )
+    print(''.join(diff))
+    exit(1)
+
+# Ensure that the user has committed their changes
+
+if len(commits) < 4:
+    print("Please ensure that you have committed your changes to 'Elegy for Hallownest.md'")
+    exit(1)
+
+# Check finished!
+
+with open('/flag', 'r') as flag_file:
+    flag = flag_file.read().strip()
+    print(f"Congratulations! Here is your flag: {flag}")
