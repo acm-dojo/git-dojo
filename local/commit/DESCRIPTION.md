@@ -120,3 +120,29 @@ git commit "fix: Remove null pointer dereference in user login"
 -   `git add -p`: 交互式地选择要暂存的修改部分。
 -   `git commit -m "message"`: 将暂存区内容附上简短信息，并提交到版本库。
 -   `git commit`: 打开编辑器编写详细的提交信息。
+
+---
+
+### 任务卡
+
+仓库已初始化，文件结构如下：
+```
+include/
+  book.hpp
+  user.hpp
+src/
+  main.cpp
+  book/
+    book1.cpp
+    book2.cpp
+  user/
+    user.cpp
+CMakeLists.txt
+```
+
+请使用 `git add` 命令将所有文件都加入暂存区，提交**book 部分文件**，包括：
+   - include/book.hpp
+   - src/book/book1.cpp
+   - src/book/book2.cpp
+  
+其它文件不能出现提交中，仓库只允许一次提交。提交完成后运行 `/challenge/submit` 检查你的结果是否符合要求。

@@ -1,0 +1,39 @@
+#!/bin/bash
+
+/mnt/sudo/setup.sh
+/mnt/site-packages/setup_packages.sh
+
+chmod +x /challenge/submit
+export PATH="/run/dojo/bin:$PATH"
+
+set -euo pipefail
+rm -rf /home/hacker/dojo-add-commit
+mkdir -p /home/hacker/dojo-add-commit/include
+mkdir -p /home/hacker/dojo-add-commit/src/book
+
+# 创建 include 文件夹及文件
+echo "// book header" > /home/hacker/dojo-add-commit/include/book.hpp
+echo "// user header" > /home/hacker/dojo-add-commit/include/user.hpp
+
+# 创建 src 文件夹及文件
+mkdir -p /home/hacker/dojo-add-commit/src
+echo "// main cpp" > /home/hacker/dojo-add-commit/src/main.cpp
+
+# 创建 src/book 文件夹及文件
+echo "// book1 cpp" > /home/hacker/dojo-add-commit/src/book/book1.cpp
+echo "// book2 cpp" > /home/hacker/dojo-add-commit/src/book/book2.cpp
+
+# 创建 src/user 文件夹及文件
+mkdir -p /home/hacker/dojo-add-commit/src/user
+echo "// user cpp" > /home/hacker/dojo-add-commit/src/user/user.cpp
+
+# 创建 CMakeLists.txt
+echo "# CMakeLists" > /home/hacker/dojo-add-commit/CMakeLists.txt
+
+# 初始 git 仓库
+cd /home/hacker/dojo-add-commit
+git init -b main >/dev/null
+git config user.name "Git Dojo"
+git config user.email "dojo@example.com"
+
+chown -R hacker:hacker /home/hacker/dojo-add-commit
