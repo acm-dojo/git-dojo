@@ -117,3 +117,26 @@ index 6b9195f..8b832a2 100644
 -   `git diff HEAD`: 查看所有**未提交**的修改（包含已暂存和未暂存）。
 
 ---
+
+### 任务卡
+调整仓库到如果使用 `git status` 命令会输出如下结果（忽略日期和提示，内容结构需一致）：
+
+```
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   src/main.cpp
+        new file:   src/book/book.cpp
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   include/user.hpp
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/uesr/user.cpp
+        CMakeLists.txt
+```
+
+调整后运行 `/challenge/submit` 检测仓库状态。

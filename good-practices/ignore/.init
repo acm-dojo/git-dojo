@@ -1,0 +1,41 @@
+#!/bin/bash
+
+/mnt/sudo/setup.sh
+/mnt/site-packages/setup_packages.sh
+
+chmod +x /challenge/submit
+export PATH="/run/dojo/bin:$PATH"
+
+set -euo pipefail
+rm -rf /home/hacker/dojo-ignore
+mkdir -p /home/hacker/dojo-ignore
+cd /home/hacker/dojo-ignore
+
+git init -b main >/dev/null
+
+git config user.name "Git Dojo"
+git config user.email "dojo@example.com"
+
+echo "# Please add rules into .gitignore." > .gitignore
+
+git add .gitignore
+git commit -m "init repo" >/dev/null
+
+# 创建测试文件和目录
+echo "log debug" > debug.log
+echo "log important" > important.log
+mkdir logs
+echo "log1" > logs/log1.log
+echo "log2" > logs/log2.log
+mkdir temp
+echo "temp file foo" > temp/foo.in
+echo "temp file bar" > temp/bar.out
+mkdir src
+echo "source code" > src/code.cpp
+echo "object file1" > src/utils1.o
+echo "object file2" > src/utils2.o
+echo "ignore file" > ignore.txt
+echo "metadata file" > metadata.txt
+
+
+chown -R hacker:hacker /home/hacker/dojo-ignore

@@ -1,0 +1,37 @@
+#!/mnt/sudo/python
+
+import os
+from git import Repo  # type: ignore
+
+REPO_PATH = "/home/hacker/dojo-status-challenge"
+repo = Repo(REPO_PATH)
+
+# 获取 git status 的各类文件
+staged = {diff.a_path for diff in repo.index.diff("HEAD")}
+unstaged = {diff.a_path for diff in repo.index.diff(None)}
+untracked = set(repo.untracked_files)
+
+# 要求的状态
+required_staged = {"src/main.cpp", "src/book/book.cpp"}
+required_unstaged = {"include/user.hpp"}
+required_untracked = {"src/user/user.cpp", "CMakeLists.txt"}
+
+errors = []
+
+if staged != required_staged:
+    errors.append(f"暂存区文件错误，应为：{required_staged}，实为：{staged}")
+
+if unstaged != required_unstaged:
+    errors.append(f"未暂存区文件错误，应为：{required_unstaged}，实为：{unstaged}")
+
+if untracked != required_untracked:
+    errors.append(f"未跟踪文件错误，应为：{required_untracked}，实为：{untracked}")
+
+if errors:
+    for e in errors:
+        print(e)
+    raise SystemExit("仓库状态不符合挑战要求，请检查 git status 并调整。")
+
+print("恭喜！仓库状态完全符合要求。")
+with open("/flag", "r", encoding="utf-8") as flag_file:
+    print(flag_file.read().strip())
