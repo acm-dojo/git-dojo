@@ -4,9 +4,6 @@
 /mnt/site-packages/setup_packages.sh
 
 chmod +x /challenge/submit
-
-sudo -u hacker bash <<'EOF'
-
 export PATH="/run/dojo/bin:$PATH"
 
 set -euo pipefail
@@ -15,7 +12,6 @@ mkdir -p /home/hacker/dojo-conflict
 cd /home/hacker/dojo-conflict
 
 git init -b main >/dev/null
-
 git config user.name "Git Dojo"
 git config user.email "dojo@example.com"
 
@@ -50,7 +46,8 @@ Chapter 3: Main timeline update.
 TXT
 
 git commit -am "main: tighten chapter three" >/dev/null
-EOF
 
-sudo -u hacker bash -lc 'cd /home/hacker/dojo-conflict && git rev-parse HEAD' > /challenge/.resolve_main_before_merge
-sudo -u hacker bash -lc 'cd /home/hacker/dojo-conflict && git rev-parse feature/story' > /challenge/.resolve_feature_head
+git rev-parse HEAD > /challenge/.resolve_main_before_merge
+git rev-parse feature/story > /challenge/.resolve_feature_head
+
+chown -R hacker:hacker /home/hacker/dojo-conflict

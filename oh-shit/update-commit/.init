@@ -4,8 +4,8 @@
 /mnt/site-packages/setup_packages.sh
 
 chmod +x /challenge/submit
+export PATH="/run/dojo/bin:$PATH"
 
-sudo -u hacker bash <<'EOF'
 set -euo pipefail
 rm -rf /home/hacker/dojo-amend
 mkdir -p /home/hacker/dojo-amend
@@ -23,6 +23,6 @@ GIT_AUTHOR_NAME="Git Dojo" GIT_AUTHOR_EMAIL="dojo@example.com" \
 GIT_COMMITTER_NAME="Git Dojo" GIT_COMMITTER_EMAIL="dojo@example.com" \
   git commit -m "this commit message is not correct" >/dev/null
 
-EOF
+git rev-parse HEAD > /challenge/.amend_initial_sha
 
-sudo -u hacker bash -lc 'cd /home/hacker/dojo-amend && git rev-parse HEAD' > /challenge/.amend_initial_sha
+chown -R hacker:hacker /home/hacker/dojo-amend

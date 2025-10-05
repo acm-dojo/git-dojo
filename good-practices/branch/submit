@@ -1,0 +1,70 @@
+#!/mnt/sudo/python
+
+import os
+from git import Repo  # type: ignore
+
+REPO_PATH = "/home/hacker/dojo-branch"
+EXPECTED_BRANCH = "feature/progress-log"
+EXPECTED_LINE = "Day 3: learned branch."
+EXPECTED_COMMIT_MESSAGE = "branch: ACM Dojo"
+MAIN_SHA_RECORD = "/challenge/.branch_main_initial_sha"
+
+if not os.path.isdir(REPO_PATH):
+    raise FileNotFoundError("Repository /home/hacker/dojo-branch was not found. Did you follow the instructions?")
+
+repo = Repo(REPO_PATH)
+
+if repo.bare:
+    raise RuntimeError("The repository looks bare. Make sure you initialized it correctly.")
+
+# Ensure the target branch exists
+branch_names = [branch.name for branch in repo.branches]
+if EXPECTED_BRANCH not in branch_names:
+    raise ValueError(f"Branch '{EXPECTED_BRANCH}' not found. Did you create and commit on the new branch?")
+
+# Verify current HEAD
+if repo.head.is_detached:
+    raise ValueError("HEAD is detached. Make sure you are on the feature branch when you submit.")
+
+active_branch = repo.active_branch.name
+if active_branch != EXPECTED_BRANCH:
+    raise ValueError(f"Expected to be on branch '{EXPECTED_BRANCH}', but currently on '{active_branch}'.")
+
+# Ensure working tree clean
+if repo.is_dirty(untracked_files=True):
+    raise RuntimeError("Working tree is not clean. Please commit or discard changes before submitting.")
+
+# Check commit message
+last_commit_message = repo.head.commit.message.strip()
+if last_commit_message != EXPECTED_COMMIT_MESSAGE:
+    raise ValueError("Unexpected commit message. Did you commit with the required message?")
+
+# Ensure progress.md contains the expected line and placeholder removed
+progress_path = os.path.join(REPO_PATH, "progress.md")
+if not os.path.isfile(progress_path):
+    raise FileNotFoundError("progress.md was not found in the repository.")
+
+with open(progress_path, "r", encoding="utf-8") as progress_file:
+    progress_content = progress_file.read()
+
+if EXPECTED_LINE not in progress_content:
+    raise ValueError("Missing the required Day 3 log entry in progress.md.")
+
+if "Draft branch workflow notes. (stash me!)" in progress_content:
+    raise ValueError("It looks like you did not replace the placeholder text in progress.md.")
+
+# Ensure main branch still points to the original commit
+if not os.path.exists(MAIN_SHA_RECORD):
+    raise FileNotFoundError("Internal setup file missing. Please re-open the challenge and try again.")
+
+with open(MAIN_SHA_RECORD, "r", encoding="utf-8") as sha_file:
+    original_main_sha = sha_file.read().strip()
+
+main_branch = repo.branches["main"]
+if main_branch.commit.hexsha != original_main_sha:
+    raise ValueError("The main branch was modified. Please leave main untouched and create commits only on the feature branch.")
+
+print("Great job! You created a branch, preserved main, and logged your progress.")
+
+with open("/flag", "r", encoding="utf-8") as flag_file:
+    print(flag_file.read().strip())

@@ -42,3 +42,60 @@ hotfix/<hotfix-description>  # 紧急修复
 ![](https://cdn.nodeimage.com/i/mi15aop6o7LEGqVSBGKT9jaEDkayu9Nk.png)
 
 左边是你要合并的分支，右边是目标分支。这与你本地的操作是类似的。
+
+最后，我还要介绍一下 `git stash` 命令。当然，你们现在不用掌握它，不过知道一下总归是好的。当你在运行 `git checkout` 切换分支时，如果工作区有未提交的更改，Git 会阻止你切换分支。这时你可以使用 `git stash` 命令将未提交的更改暂存起来，等切换到目标分支后再恢复。在你们看到这里的时候，大概率助教已经给你们讲了 栈 (Stack) 这个数据结构~~（好吧可能他也只讲了讲STL的栈怎么用吧）~~。事实上，`git stash` 就是利用栈的特性来保存和恢复工作区的状态。具体而言：
+
+```bash
+git stash push -m "some unsaved work" # 缓存这些未提交的更改
+git checkout some_new_branch # 切换到新分支
+...
+# 当你新分支上的工作完成后
+git checkout previous_branch # 切换回之前的分支
+git stash pop # 看！这就是栈！push 进去的东西 pop 出来
+```
+
+## RECAP
+
+在本章中，你学习了如何利用分支隔离工作并安全地合并回主干。
+
+### 核心概念
+
+- **分支可以理解成平行时间线**：在不打扰 `main` 的情况下开发新功能或修复问题。
+- **分支命名规范**：用 `feature/`、`bugfix/` 等前缀，类似于 commit message 的规范。
+- **临时存储工作区**：`git stash` 用栈的方式保存未提交的改动，方便切换分支。
+
+### 关键命令
+
+- `git branch <branch-name>`：创建新分支
+- `git checkout <branch-name>`：切换到指定分支
+- `git checkout -b <branch-name>`：创建并切换分支
+- `git merge <branch-name>`：把目标分支合并进当前分支
+- `git stash push -m "<note>"` / `git stash pop`：暂存并恢复未提交更改
+
+### 命令速查表
+
+- `git branch feature/ui`：新建 `feature/ui` 分支
+- `git checkout -b feature/ui`：新建并切换到 `feature/ui`
+- `git checkout feature/ui`：进入该分支继续开发
+- `git checkout main && git merge feature/ui`：返回 `main` 并完成合并
+- `git stash push -m "WIP logs"`：保存未完成的工作以便切换
+- `git stash list` / `git stash pop`：查看并取回暂存的更改
+
+### 一些 Tips
+
+- 合并前记得回到目标分支（通常是 `main`）。
+- 分支上的提交和主分支完全一样，放心使用 `git add` / `git commit`。
+
+---
+
+## 任务卡
+
+现在轮到你来实践一次分支协作流程了！我们已经在 `~/dojo-branch` 中准备好一个仓库，其中 `main` 分支上有一份日常进度日志，但第三天的记录还在草稿状态，且目前保持在未提交的工作区里。
+
+请按照下面的步骤完成练习：
+
+进入目录：`cd ~/dojo-branch`，创建并切换到新分支，名字叫 `feature/progress-log`。
+
+打开 `progress.md`，新增一行 `Day 3: learned branch.`。使用 `git add` 和 `git commit` 提交更改，提交信息为 `branch: ACM Dojo`。
+
+运行 `/challenge/submit` 检查结果。
