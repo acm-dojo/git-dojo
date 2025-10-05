@@ -1,10 +1,10 @@
 #!/bin/bash
 
-/mnt/sudo/setup.sh
-/mnt/site-packages/setup_packages.sh
-
 chmod +x /challenge/submit
 
 set -euo pipefail
 rm -rf /home/hacker/dojo-init
 mkdir -p /home/hacker
+
+source /mnt/site-packages/setup_packages.sh
+/mnt/sudo/setup.sh

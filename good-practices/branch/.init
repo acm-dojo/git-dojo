@@ -1,8 +1,5 @@
 #!/bin/bash
 
-/mnt/sudo/setup.sh
-/mnt/site-packages/setup_packages.sh
-
 chmod +x /challenge/submit
 export PATH="/run/dojo/bin:$PATH"
 
@@ -30,3 +27,6 @@ GIT_COMMITTER_NAME="Git Dojo" GIT_COMMITTER_EMAIL="dojo@example.com" \
 git rev-parse HEAD > /challenge/.branch_main_initial_sha
 
 chown -R hacker:hacker /home/hacker/dojo-branch
+
+source /mnt/site-packages/setup_packages.sh
+/mnt/sudo/setup.sh
