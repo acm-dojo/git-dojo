@@ -24,5 +24,7 @@ git rev-parse HEAD > /challenge/.amend_initial_sha
 
 chown -R hacker:hacker /home/hacker/dojo-amend
 
+git config --global --add safe.directory /home/hacker/dojo-amend
+
 source /mnt/site-packages/setup_packages.sh
 /mnt/sudo/setup.sh

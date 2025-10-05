@@ -6,5 +6,7 @@ set -euo pipefail
 rm -rf /home/hacker/dojo-init
 mkdir -p /home/hacker
 
+git config --global --add safe.directory /home/hacker/dojo-init
+
 source /mnt/site-packages/setup_packages.sh
 /mnt/sudo/setup.sh

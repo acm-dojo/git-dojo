@@ -28,5 +28,7 @@ git rev-parse HEAD > /challenge/.branch_main_initial_sha
 
 chown -R hacker:hacker /home/hacker/dojo-branch
 
+git config --global --add safe.directory /home/hacker/dojo-branch
+
 source /mnt/site-packages/setup_packages.sh
 /mnt/sudo/setup.sh
