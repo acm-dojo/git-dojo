@@ -19,9 +19,11 @@ chown hacker:hacker -R /opt/git-sample-repo/
 rm -rf /challenge/git-sample-repo  # clean up
 
 cat > /etc/gitconfig <<'EOF'
-[url "/opt/git-sample-repo/"]
+[url "/opt/git-sample-repo"]
     insteadOf = https://github.com/acm-dojo/git-sample-repo
+    insteadOf = https://github.com/acm-dojo/git-sample-repo.git
     insteadOf = git@github.com:acm-dojo/git-sample-repo
+    insteadOf = git@github.com:acm-dojo/git-sample-repo.git
 EOF
 
 source /mnt/site-packages/setup_packages.sh
