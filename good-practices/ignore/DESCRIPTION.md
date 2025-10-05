@@ -41,7 +41,6 @@ testcases/
 > # 创建两个日志文件
 > touch a.log b.log
 >
->
 > # 将 a.log 添加到暂存区，使其变为“已跟踪”状态
 > git add a.log
 >
