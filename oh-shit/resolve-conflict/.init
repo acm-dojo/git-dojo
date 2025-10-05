@@ -49,5 +49,7 @@ git rev-parse feature/story > /challenge/.resolve_feature_head
 
 chown -R hacker:hacker /home/hacker/dojo-conflict
 
+git config --global --add safe.directory /home/hacker/dojo-conflict
+
 source /mnt/site-packages/setup_packages.sh
 /mnt/sudo/setup.sh
