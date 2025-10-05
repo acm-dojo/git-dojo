@@ -5,3 +5,5 @@ challenges:
     name: Initializing a Repository
   - id: commit
     name: Staging and Committing Changes
+  - id: status
+    name: Checking Repository Status
