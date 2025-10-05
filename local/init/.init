@@ -1,6 +1,7 @@
 #!/bin/bash
 
 chmod +x /challenge/submit
+export PATH="/run/dojo/bin:$PATH"
 
 set -euo pipefail
 rm -rf /home/hacker/dojo-init
