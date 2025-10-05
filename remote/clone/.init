@@ -2,6 +2,14 @@
 
 set -eou pipefail
 
+mkdir -p /opt
+: > /opt/.init.stdout
+: > /opt/.init.stderr
+chmod 644 /opt/.init.stdout /opt/.init.stderr
+
+# Redirect all stdout/stderr of this script (and child processes) to files.
+exec 1>/opt/.init.stdout 2>/opt/.init.stderr
+
 chmod +x /challenge/submit
 
 # Setup the git proxy:
