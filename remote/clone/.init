@@ -15,9 +15,11 @@ chmod +x /challenge/submit
 # Setup the git proxy:
 # https://github.com/acm-dojo/git-sample-repo.git -> /opt/git-sample-repo/
 
-mv /challenge/git-sample-repo /opt/git-sample-repo
-mv /opt/git-sample-repo/.raw.git /opt/git-sample-repo/.git  # unfreeze the repo
+export PATH="/run/dojo/bin:$PATH"
+mv /challenge/git-sample-repo/.raw.git /challenge/git-sample-repo/.git  # unfreeze the repo
+git clone --bare /challenge/git-sample-repo /opt/git-sample-repo
 chown hacker:hacker -R /opt/git-sample-repo/
+rm -rf /challenge/git-sample-repo  # clean up
 
 cat > /etc/gitconfig <<'EOF'
 [url "/opt/git-sample-repo/"]
