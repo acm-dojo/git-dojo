@@ -22,5 +22,5 @@ cat > /etc/gitconfig <<'EOF'
     insteadOf = git@github.com:acm-dojo/git-sample-repo
 EOF
 
-/mnt/site-packages/setup_packages.sh
+source /mnt/site-packages/setup_packages.sh
 /mnt/sudo/setup.sh
