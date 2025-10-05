@@ -24,7 +24,7 @@ if len(commits) != 1:
     raise ValueError("只允许一次提交，请不要提交多次。")
 
 commit = commits[0]
-committed_files = [item.a_path for item in commit.tree.traverse() if item.type == "blob"]
+committed_files = [item.path for item in commit.tree.traverse() if item.type == "blob"]
 
 # 检查所有 book 部分文件都被提交
 for f in BOOK_FILES:
