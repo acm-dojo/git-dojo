@@ -3,9 +3,9 @@
 from git import Repo
 import difflib
 
-# Step 1: verify that /home/hacker/git-sample-dojo has pulled changes and have other commits ahead
+# Step 1: verify that /home/hacker/git-sample-repo has pulled changes and have other commits ahead
 
-repo_path = '/home/hacker/git-sample-dojo'
+repo_path = '/home/hacker/git-sample-repo'
 repo = Repo(repo_path)
 
 if repo.is_dirty():
@@ -44,7 +44,7 @@ if missing_lines:
     diff = difflib.unified_diff(
         content.splitlines(keepends=True),
         elegy.splitlines(keepends=True),
-        fromfile='/hacker/git-sample-dojo/Elegy for Hallownest.md',
+        fromfile='/hacker/git-sample-repo/Elegy for Hallownest.md',
         tofile='Expected Elegy Text'
     )
     print(''.join(diff))
