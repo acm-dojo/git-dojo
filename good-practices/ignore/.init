@@ -10,8 +10,8 @@ cd /home/hacker/dojo-ignore
 
 git init -b main >/dev/null
 
-git config user.name "Git Dojo"
-git config user.email "dojo@example.com"
+git config user.name "hacker"
+git config user.email "hacker@sjtu.edu.cn"
 
 echo "# Please add rules into .gitignore." > .gitignore
 
