@@ -22,5 +22,5 @@ mv -f /home/hacker/git-reset/.raw.git /home/hacker/git-reset/.git  # unfreeze th
 chown hacker:hacker -R /home/hacker/git-reset/
 chmod 644 /home/hacker/git-reset/*.md
 
-/mnt/site-packages/setup_packages.sh
+source /mnt/site-packages/setup_packages.sh
 /mnt/sudo/setup.sh
