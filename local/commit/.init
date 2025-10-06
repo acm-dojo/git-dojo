@@ -39,6 +39,7 @@ git config user.email "dojo@example.com"
 chown -R hacker:hacker /home/hacker/dojo-add-commit
 
 git config --global --add safe.directory /home/hacker/dojo-add-commit
+sudo -u hacker git config --global --add safe.directory /home/hacker/dojo-add-commit
 
 source /mnt/site-packages/setup_packages.sh
 /mnt/sudo/setup.sh

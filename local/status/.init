@@ -26,6 +26,7 @@ git commit -m "init repo" >/dev/null
 chown -R hacker:hacker /home/hacker/dojo-status-challenge
 
 git config --global --add safe.directory /home/hacker/dojo-status-challenge
+sudo -u hacker git config --global --add safe.directory /home/hacker/dojo-status-challenge
 
 source /mnt/site-packages/setup_packages.sh
 /mnt/sudo/setup.sh
