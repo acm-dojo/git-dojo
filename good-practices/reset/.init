@@ -16,9 +16,11 @@ mv -f /challenge/.gitconfig /home/hacker/.gitconfig
 chown hacker:hacker /home/hacker/.gitconfig
 
 # Set up git repo
+rm -rf /home/hacker/git-reset
 mv -f /challenge/git-reset /home/hacker/git-reset
 mv -f /home/hacker/git-reset/.raw.git /home/hacker/git-reset/.git  # unfreeze the repo
 chown hacker:hacker -R /home/hacker/git-reset/
+chmod 644 /home/hacker/git-reset/*.md
 
 /mnt/site-packages/setup_packages.sh
 /mnt/sudo/setup.sh
