@@ -1,0 +1,60 @@
+#!/mnt/sudo/python
+
+import os
+from git import Repo  # type: ignore
+
+REPO_PATH = "/home/hacker/dojo-add-commit"
+
+BOOK_FILES = [
+    "include/book.hpp",
+    "src/book/book1.cpp",
+    "src/book/book2.cpp"
+]
+
+NON_BOOK_FILES = [
+    "include/user.hpp",
+    "src/main.cpp",
+    "src/user/user.cpp",
+    "CMakeLists.txt"
+]
+
+ALL_FILES = BOOK_FILES + NON_BOOK_FILES
+
+repo = Repo(REPO_PATH)
+commits = list(repo.iter_commits("main"))
+if len(commits) != 1:
+    raise ValueError("只允许一次提交，请不要提交多次。")
+
+commit = commits[0]
+committed_files = [item.path for item in commit.tree.traverse() if item.type == "blob"]
+
+# 检查所有 book 部分文件都被提交
+for f in BOOK_FILES:
+    if f not in committed_files:
+        raise ValueError(f"book 部分文件未全部提交: 缺少 {f}")
+
+# 检查非 book 部分文件未被提交
+for f in NON_BOOK_FILES:
+    if f in committed_files:
+        raise ValueError(f"非 book 部分文件不应被提交: {f}")
+
+# 检查所有文件和目录都在工作区且尽数被跟踪
+for f in ALL_FILES:
+    full_path = os.path.join(REPO_PATH, f)
+    if f.endswith('/'):
+        if not os.path.isdir(full_path):
+            raise ValueError(f"目录 {f} 已被删除或不存在")
+    else:
+        if not os.path.isfile(full_path):
+            raise ValueError(f"文件 {f} 已被删除或不存在")
+            
+if repo.untracked_files:
+    raise RuntimeError(f"有未跟踪文件：{repo.untracked_files}")
+
+# 检查工作区是否干净
+if repo.is_dirty(index=False, working_tree=True, untracked_files=True):
+    raise RuntimeError("工作区不干净。请确保所有相关更改已提交，且未跟踪文件为空。")
+
+print("挑战完成！你只提交了 book 部分，检测通过。")
+with open("/flag", "r", encoding="utf-8") as flag_file:
+    print(flag_file.read().strip())

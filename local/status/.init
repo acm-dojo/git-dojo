@@ -1,0 +1,29 @@
+#!/bin/bash
+
+chmod +x /challenge/submit
+export PATH="/run/dojo/bin:$PATH"
+
+set -euo pipefail
+rm -rf /home/hacker/dojo-status-challenge
+mkdir -p /home/hacker/dojo-status-challenge/include
+mkdir -p /home/hacker/dojo-status-challenge/src
+mkdir -p /home/hacker/dojo-status-challenge/src/book
+mkdir -p /home/hacker/dojo-status-challenge/src/user
+
+
+cd /home/hacker/dojo-status-challenge
+git init -b main >/dev/null
+git config user.name "Git Dojo"
+git config user.email "dojo@example.com"
+
+# 首次提交所有文件
+git add .
+git commit -m "init repo" >/dev/null
+
+chown -R hacker:hacker /home/hacker/dojo-status-challenge
+
+git config --global --add safe.directory /home/hacker/dojo-status-challenge
+sudo -u hacker git config --global --add safe.directory /home/hacker/dojo-status-challenge
+
+source /mnt/site-packages/setup_packages.sh
+/mnt/sudo/setup.sh
