@@ -52,7 +52,7 @@ if repo.untracked_files:
     raise RuntimeError(f"有未跟踪文件：{repo.untracked_files}")
 
 # 检查工作区是否干净
-if repo.is_dirty(untracked_files=True):
+if repo.is_dirty(index=False, working_tree=True, untracked_files=True):
     raise RuntimeError("工作区不干净。请确保所有相关更改已提交，且未跟踪文件为空。")
 
 print("挑战完成！你只提交了 book 部分，检测通过。")
