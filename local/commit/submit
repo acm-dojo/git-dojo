@@ -18,6 +18,8 @@ NON_BOOK_FILES = [
     "CMakeLists.txt"
 ]
 
+ALL_FILES = BOOK_FILES + NON_BOOK_FILES
+
 repo = Repo(REPO_PATH)
 commits = list(repo.iter_commits("main"))
 if len(commits) != 1:
