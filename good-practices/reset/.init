@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -eou pipefail
+
+mkdir -p /opt
+: > /opt/.init.stdout
+: > /opt/.init.stderr
+chmod 644 /opt/.init.stdout /opt/.init.stderr
+
+chmod +x /challenge/submit
+
+export PATH="$PATH:/run/dojo/bin"
+
+# Setup gitconfig
+mv -f /challenge/.gitconfig /home/hacker/.gitconfig
+chown hacker:hacker /home/hacker/.gitconfig
+
+# Set up git repo
+mv -f /challenge/git-reset /home/hacker/git-reset
+mv -f /home/hacker/git-reset/.raw.git /home/hacker/git-reset/.git  # unfreeze the repo
+chown hacker:hacker -R /home/hacker/git-reset/
+
+/mnt/site-packages/setup_packages.sh
+/mnt/sudo/setup.sh

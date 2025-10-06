@@ -1,0 +1,7 @@
+[user]
+    name = Hacker
+    email = hacker@sjtu.edu.cn
+[core]
+    editor = nano
+[safe]
+    directory = /home/hacker/git-reset
