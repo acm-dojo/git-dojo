@@ -4,4 +4,4 @@
 [core]
     editor = nano
 [safe]
-    directory = /home/hacker/git-reset
+    directory = /home/hacker/git-sample-repo
