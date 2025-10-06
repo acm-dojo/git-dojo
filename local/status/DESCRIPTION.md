@@ -135,7 +135,7 @@ Changes not staged for commit:
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-        src/uesr/user.cpp
+        src/user/user.cpp
         CMakeLists.txt
 ```
 

@@ -1,8 +1,5 @@
 #!/bin/bash
 
-/mnt/sudo/setup.sh
-/mnt/site-packages/setup_packages.sh
-
 chmod +x /challenge/submit
 export PATH="/run/dojo/bin:$PATH"
 
