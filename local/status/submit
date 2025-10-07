@@ -3,12 +3,12 @@
 import os
 from git import Repo  # type: ignore
 
-REPO_PATH = "/home/hacker/dojo-status-challenge"
+REPO_PATH = "/home/hacker/dojo-status"
 repo = Repo(REPO_PATH)
 
 # 获取 git status 的各类文件
-staged = {diff.a_path for diff in repo.index.diff("HEAD")}
-unstaged = {diff.a_path for diff in repo.index.diff(None)}
+staged = {diff.path for diff in repo.index.diff("HEAD")}
+unstaged = {diff.path for diff in repo.index.diff(None)}
 untracked = set(repo.untracked_files)
 
 # 要求的状态

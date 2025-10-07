@@ -4,14 +4,13 @@ chmod +x /challenge/submit
 export PATH="/run/dojo/bin:$PATH"
 
 set -euo pipefail
-rm -rf /home/hacker/dojo-status-challenge
-mkdir -p /home/hacker/dojo-status-challenge/include
-mkdir -p /home/hacker/dojo-status-challenge/src
-mkdir -p /home/hacker/dojo-status-challenge/src/book
-mkdir -p /home/hacker/dojo-status-challenge/src/user
+rm -rf /home/hacker/dojo-status
+mkdir -p /home/hacker/dojo-status/include
+mkdir -p /home/hacker/dojo-status/src
+mkdir -p /home/hacker/dojo-status/src/book
+mkdir -p /home/hacker/dojo-status/src/user
 
-
-cd /home/hacker/dojo-status-challenge
+cd /home/hacker/dojo-status
 git init -b main >/dev/null
 
 git config user.name "hacker"
@@ -23,9 +22,9 @@ echo "# Status Practice" > README.md
 git add .
 git commit -m "init repo" >/dev/null
 
-chown -R hacker:hacker /home/hacker/dojo-status-challenge
+chown -R hacker:hacker /home/hacker/dojo-status
 
-git config --global --add safe.directory /home/hacker/dojo-status-challenge
+git config --global --add safe.directory /home/hacker/dojo-status
 
 source /mnt/site-packages/setup_packages.sh
 /mnt/sudo/setup.sh
