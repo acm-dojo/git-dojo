@@ -79,3 +79,5 @@ git config --list
     name = Your Name
     email = you@example.com
 ```
+
+本章不设置挑战。作为阅读章节即可。
