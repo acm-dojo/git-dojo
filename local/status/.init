@@ -10,6 +10,12 @@ mkdir -p /home/hacker/dojo-status/src
 mkdir -p /home/hacker/dojo-status/src/book
 mkdir -p /home/hacker/dojo-status/src/user
 
+touch /home/hacker/dojo-status/CMakeLists.txt
+touch /home/hacker/dojo-status/src/main.cpp
+touch /home/hacker/dojo-status/src/book/book.cpp
+touch /home/hacker/dojo-status/src/user/user.cpp
+touch /home/hacker/dojo-status/include/user.hpp
+
 cd /home/hacker/dojo-status
 git init -b main >/dev/null
 

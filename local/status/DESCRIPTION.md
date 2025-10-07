@@ -119,14 +119,14 @@ index 6b9195f..8b832a2 100644
 ---
 
 ### 任务卡
-调整仓库到如果使用 `git status` 命令会输出如下结果（忽略日期和提示，内容结构需一致）：
+调整仓库到如果使用 `git status` 命令会输出如下结果（忽略日期和提示，忽略可能出现的同一区域内文档行位置不一样的问题，只需保证每个文件在对应的git分区内即可）：
 
 ```
 On branch main
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-        modified:   src/main.cpp
         new file:   src/book/book.cpp
+        modified:   src/main.cpp
 
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
@@ -135,7 +135,7 @@ Changes not staged for commit:
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-        src/user/user.cpp
+        src/user
         CMakeLists.txt
 ```
 
