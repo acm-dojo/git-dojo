@@ -4,7 +4,14 @@ from git import Repo
 import os
 
 repo_path = os.path.abspath("/home/hacker/git-sample-repo")
-repo_origin_urls = ["https://github.com/acm-dojo/git-sample-repo.git", "git@github.com:acm-dojo/git-sample-repo.git"]
+repo_origin_urls = [
+    "https://github.com/acm-dojo/git-sample-repo.git",
+    "https://github.com/acm-dojo/git-sample-repo",
+    "https://github.com/acm-dojo/git-sample-repo/",
+    "git@github.com:acm-dojo/git-sample-repo.git",
+    "git@github.com:acm-dojo/git-sample-repo",
+    "git@github.com:acm-dojo/git-sample-repo/",
+]
 
 if not os.path.exists(repo_path):
     raise FileNotFoundError("Repository path does not exist.")
