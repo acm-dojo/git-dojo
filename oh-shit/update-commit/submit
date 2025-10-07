@@ -5,7 +5,7 @@ from git import Repo  # type: ignore
 
 REPO_PATH = "/home/hacker/dojo-amend"
 INITIAL_SHA_RECORD = "/challenge/.amend_initial_sha"
-EXPECTED_MESSAGE = "Add release readiness checklist"
+EXPECTED_MESSAGE = "feat: I love dojo"
 EXPECTED_LINES = [
     "# ACM Dojo"
 ]
