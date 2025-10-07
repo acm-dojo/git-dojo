@@ -13,8 +13,11 @@ mkdir -p /home/hacker/dojo-status-challenge/src/user
 
 cd /home/hacker/dojo-status-challenge
 git init -b main >/dev/null
+
 git config user.name "hacker"
 git config user.email "hacker@sjtu.edu.cn"
+
+echo "# Status Practice" > README.md
 
 # 首次提交所有文件
 git add .
