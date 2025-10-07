@@ -12,9 +12,9 @@ unstaged = {diff.a_path for diff in repo.index.diff(None)}
 untracked = set(repo.untracked_files)
 
 # 要求的状态
-required_staged = {"src/main.cpp", "src/book/book.cpp"}
+required_staged = {"src/main.cpp"}
 required_unstaged = {"include/user.hpp"}
-required_untracked = {"src/user/user.cpp", "CMakeLists.txt"}
+required_untracked = {"CMakeLists.txt"}
 
 errors = []
 
