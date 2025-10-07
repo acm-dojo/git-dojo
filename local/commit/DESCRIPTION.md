@@ -79,7 +79,7 @@ git add -p <file>/<directory>/.
 git commit -m "feat: Add README.md"
 
 # 打开文本编辑器编写信息：如果不带参数，Git 会自动打开配置的默认文本编辑器（如 Nano、Vim），让用户编写更详细的提交信息。
-git commit
+git commit "空行"
 
 ```
 
@@ -92,9 +92,12 @@ git commit
 一个有所简化的标准的提交信息格式如下：
 ```
 <类型>: <简短描述>
+
+[可选的正文]
 ```
 -   **类型 (Type)**: 如 `feat` (新功能), `fix` (修复bug), `docs` (文档), `style` (格式), `refactor` (重构), `test` (测试), `chore` (构建或杂务)。
 -   **简短描述**: 50个字符以内，清晰概括本次提交。
+-   **正文 (Body)**: 可选，正文必须起始于描述字段结束的一个空行后，每行不超过72个字符，并可以使用空行分隔不同段落。提交的正文内容自由编写。
 
 例子:
 ```bash
@@ -123,7 +126,7 @@ git commit "fix: Remove null pointer dereference in user login"
 
 ---
 
-### 任务卡
+## 任务卡
 
 进入仓库`~/dojo-add-commit`，仓库已初始化，文件结构如下：
 ```
