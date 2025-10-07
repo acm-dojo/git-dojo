@@ -125,7 +125,7 @@ git commit "fix: Remove null pointer dereference in user login"
 
 ### 任务卡
 
-仓库已初始化，文件结构如下：
+进入仓库`~/dojo-add-commit`，仓库已初始化，文件结构如下：
 ```
 include/
   book.hpp
@@ -139,10 +139,9 @@ src/
     user.cpp
 CMakeLists.txt
 ```
-
-请使用 `git add` 命令将所有文件都加入暂存区，提交**book 部分文件**，包括：
+请使用 `git add` 命令将工作目录下所有修改过的文件加入暂存区，并提交以下文件：
    - include/book.hpp
    - src/book/book1.cpp
    - src/book/book2.cpp
   
-其它文件不能出现提交中，仓库只允许一次提交。提交完成后运行 `/challenge/submit` 检查你的结果是否符合要求。
+只允许进行一次提交，且其它文件不能出现本次提交中。提交完成后运行 `/challenge/submit` 检查你的结果是否符合要求。
