@@ -30,8 +30,8 @@ echo "# CMakeLists" > /home/hacker/dojo-add-commit/CMakeLists.txt
 # 初始 git 仓库
 cd /home/hacker/dojo-add-commit
 git init -b main >/dev/null
-git config user.name "Git Dojo"
-git config user.email "dojo@example.com"
+git config user.name "hacker"
+git config user.email "hacker@sjtu.edu.cn"
 
 chown -R hacker:hacker /home/hacker/dojo-add-commit
 

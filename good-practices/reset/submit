@@ -1,0 +1,65 @@
+#!/mnt/sudo/python
+
+from git import Repo
+import os
+
+repo_path = '/home/hacker/git-reset'
+repo = Repo(repo_path)
+
+if repo.is_dirty():
+    print("Repository has uncommitted changes. Please commit them before proceeding.")
+    exit(1)
+
+commits = list(repo.iter_commits('main'))
+
+'''
+HEAD~0 -> 63e9278ea6587fc8e017cde3a5b8c30fa26e1226
+ ^ feat: add grimm troupe and erase all other documented references
+
+HEAD~1 -> f337fab324cef282aa699485bcbedcad72efc8c1
+ ^ feat: add mantis tribe info
+
+HEAD~2 -> 3b94ad40148c2a49603df590b73866e889dd49f1
+ ^ feat: add mushroom clan info
+
+HEAD~3 -> 73e3d397b57e1e296d481acad38c9dd6fd9fdecc (initial commit)
+ ^ feat: feat: add mosskin info
+
+---
+
+Expected: revert to HEAD~1 then add a new commit for only the Grimm Troupe
+
+'''
+
+if commits[0].hexsha == '63e9278ea6587fc8e017cde3a5b8c30fa26e1226':
+    print("Please ensure that you have reset to HEAD~1 and committed the changes for Grimm Troupe")
+    exit(1)
+
+if commits[1].message.strip() != "feat: add mantis tribe info":
+    print("Oops! It seems like you have reset too far back!")
+    exit(1)
+
+# Validate that the last commit picks out grimm.md and discards all other files
+files = os.listdir(repo_path)
+
+if 'grimm.md' not in files:
+    print("Please ensure that you have committed the changes for Grimm Troupe")
+    exit(1)
+
+if 'mushroom.md' not in files or 'mosskin.md' not in files or 'mantis.md' not in files:
+    print("Expected files mushroom.md, mosskin.md and mantis.md to be present")
+    exit(1)
+
+# Easily read all of them and ensure that '## References' are present
+
+for filename in ['grimm.md', 'mushroom.md', 'mosskin.md', 'mantis.md']:
+    with open(os.path.join(repo_path, filename), 'r') as file:
+        content = file.read()
+        if '## References' not in content:
+            print(f"Expected wrongly deleted 'References' section to be present in {filename}")
+            exit(1)
+
+# Check finished!
+with open('/flag', 'r') as flag_file:
+    print("Congratulations! You have passed the verification. Here is your flag:")
+    print(flag_file.read().strip())

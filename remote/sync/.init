@@ -26,5 +26,9 @@ cat > /etc/gitconfig <<'EOF'
     insteadOf = git@github.com:acm-dojo/git-sample-repo.git
 EOF
 
+# Setup hacker gitconfig file
+mv -f /challenge/.gitconfig /home/hacker/.gitconfig
+chown hacker:hacker /home/hacker/.gitconfig
+
 source /mnt/site-packages/setup_packages.sh
 /mnt/sudo/setup.sh

@@ -1,0 +1,7 @@
+[user]
+    name = hacker
+    email = hacker@sjtu.edu.cn
+[core]
+    editor = nano
+[safe]
+    directory = /home/hacker/git-sample-repo
