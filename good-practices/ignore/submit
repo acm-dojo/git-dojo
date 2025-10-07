@@ -26,7 +26,7 @@ repo = Repo(REPO_PATH)
 
 # 获取所有已提交文件（不包括之前的提交，只看最新提交）
 latest_commit = list(repo.iter_commits("main"))[0]
-committed_files = [item.a_path for item in latest_commit.tree.traverse() if item.type == "blob"]
+committed_files = [item.path for item in latest_commit.tree.traverse() if item.type == "blob"]
 
 # 获取所有工作区未跟踪文件（即被 .gitignore 忽略的）
 untracked_files = repo.untracked_files
@@ -42,7 +42,7 @@ for f in EXPECTED_TRACKED:
         raise ValueError(f"关键文件 {f} 未被提交。请检查你的 .gitignore 规则。")
 
 # 检查工作区是否干净
-if repo.is_dirty(untracked_files=True):
+if repo.is_dirty(index=False, working_tree=True, untracked_files=True):
     raise RuntimeError("工作区不干净。请确保所有需提交的文件都已提交。")
 
 print("挑战完成！你的 .gitignore 实际效果完全正确。")
