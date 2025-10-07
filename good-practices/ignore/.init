@@ -34,11 +34,9 @@ echo "object file2" > src/utils2.o
 echo "ignore file" > ignore.txt
 echo "metadata file" > metadata.txt
 
-
 chown -R hacker:hacker /home/hacker/dojo-ignore
 
 git config --global --add safe.directory /home/hacker/dojo-ignore
-sudo -u hacker git config --global --add safe.directory /home/hacker/dojo-ignore
 
 source /mnt/site-packages/setup_packages.sh
 /mnt/sudo/setup.sh
