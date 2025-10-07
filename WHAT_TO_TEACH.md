@@ -14,4 +14,4 @@
   - 9. reset (The Time Machine) [`git reset`]
 - oh-shit (Oh Shit, Git)
   - 10. update-commit (Updating a Local Commit) [`git commit --amend`]
-  - 11. resolve-conflicts (Resolving Merge Conflicts) [`git merge`, `git mergetool`]
+  - 11. resolve-conflict (Resolving Merge Conflicts) [`git merge`, `git status`]

@@ -11,7 +11,7 @@
 例 1 ：
 某些大作业的测试点大小可能高达 500 MB ，如果我们将测试点解压到 Git 仓库 `main` 分支的 `testcases/` 目录下并提交，会遭遇如下问题：
 ``` bash
-git add.
+git add .
 git commit -m "chore: add testcases."
 git push origin main
 

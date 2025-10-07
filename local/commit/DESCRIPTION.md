@@ -63,7 +63,7 @@ git add src/
 git add .
 
 # 交互式添加: 使用 `-p` 或 `--patch` 标志，Git 会逐一展示文件中的每一处修改（称为 "hunk"），让你决定是否要暂存它。
-git add -p <file>/<directory>/.
+git add -p
 
 ```
 
@@ -79,7 +79,7 @@ git add -p <file>/<directory>/.
 git commit -m "feat: Add README.md"
 
 # 打开文本编辑器编写信息：如果不带参数，Git 会自动打开配置的默认文本编辑器（如 Nano、Vim），让用户编写更详细的提交信息。
-git commit "空行"
+git commit
 
 ```
 
@@ -101,7 +101,7 @@ git commit "空行"
 
 例子:
 ```bash
-git commit "fix: Remove null pointer dereference in user login"
+git commit -m "fix: Remove null pointer dereference in user login"
 ```
 
 更具体的规范可见： [Conventional Commits 规范](https://www.conventionalcommits.org/zh-hans/v1.0.0/)

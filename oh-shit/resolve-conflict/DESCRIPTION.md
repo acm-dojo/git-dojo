@@ -41,7 +41,7 @@ echo "version=2-from-test" > app.txt
 git commit -am "test: update version"
 
 # 回到 main，做不同修改
-git switch -c main
+git switch main
 
 echo "version=2-from-main" > app.txt
 
@@ -95,9 +95,9 @@ version=2-from-test
 >
 >   「走为上计」：如果你觉得冲突太复杂，想要放弃合并，可以使用 `git merge --abort` 来取消合并操作，回到合并前的状态。
 >
->   「言听计从」：如果你决定保留别人的更改，可以使用 `git merge -s theirs ...` 这里 "..." 是你要合并的分支名。
+>   「言听计从」：如果你决定保留别人的更改，可以使用 `git merge -X theirs ...`；这里 `-X theirs` 表示在冲突时倾向于对方分支的改动，`...` 是你要合并的分支名。
 >
->   「固执己见」：如果你决定保留自己的更改，可以使用 `git merge -s ours ...` 这里 "..." 是你要合并的分支名。
+>   「固执己见」：如果你决定保留自己的更改，可以使用 `git merge -s ours ...`；这会记录一次合并但保留当前分支的内容，务必谨慎使用。
 >    
 >    以上内容来源于 [刘祎禹学长的博客](https://lau.yeeyu.org/blog-zh-cn/git-usage-merging-zh-cn/)，他取的这三个名字实在是太好了，所以我也搬过来了🤣。
 
