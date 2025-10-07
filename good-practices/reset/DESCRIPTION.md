@@ -20,7 +20,7 @@
 
 ```
 git reset d1977cfba62fadd89e2f2f292256866d4da286a5
-git reset HEAD (回退到 HEAD 自生, 也就是当前 commit)
+git reset HEAD (回退到 HEAD 自身, 也就是当前 commit)
 git reset HEAD~1 (回退到 HEAD 的上一个提交, 也就是倒数第二个 commit)
 ```
 
@@ -104,7 +104,7 @@ git revert HEAD~1
 
 ## 任务卡
 
-我们在你的 `/home` 目录下创建了一个 `git-reset` 仓库, 请你完成以下任务:
+我们在 `/home/hacker` 目录下创建了一个 `git-reset` 仓库, 请你完成以下任务:
 
 1. 回退到倒数第二个 commit 的状态, 但请不要清空该状态之后的更改. 我们把这个 commit 记为 `x`;
 2. 新建一个 commit, 消息任意: 提交在 `x` 之后对于文件 `grimm.md` 的更改, 并丢弃对于其他文件的更改.

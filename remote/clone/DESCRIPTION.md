@@ -26,7 +26,7 @@ git clone https://github.com/RayZh-hs/neofrp.git
 
 ---
 
-在这个挑战中, 你需要克隆我们准备的一个远程仓库:
+在这个挑战中, 你需要克隆我们准备的一个远程仓库 (点击下面的链接访问 GitHub 页面):
 
 [Git Sample Dojo](https://github.com/acm-dojo/git-sample-repo)
 
