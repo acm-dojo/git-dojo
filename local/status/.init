@@ -1,9 +1,17 @@
 #!/bin/bash
 
+cleanup_on_error() {
+    echo "Error occurred, cleaning up..."
+    rm -rf /home/hacker/dojo-status || true
+}
+
+trap cleanup_on_error ERR EXIT
+
 chmod +x /challenge/submit
 export PATH="/run/dojo/bin:$PATH"
 
 set -euo pipefail
+
 rm -rf /home/hacker/dojo-status
 mkdir -p /home/hacker/dojo-status/include
 mkdir -p /home/hacker/dojo-status/src
