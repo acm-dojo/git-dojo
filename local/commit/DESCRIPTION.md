@@ -123,6 +123,7 @@ git commit -m "fix: Remove null pointer dereference in user login"
 -   `git add -p`: 交互式地选择要暂存的修改部分。
 -   `git commit -m "message"`: 将暂存区内容附上简短信息，并提交到版本库。
 -   `git commit`: 打开编辑器编写详细的提交信息。
+-   `git commit <file1> <file2> ...`: 提交指定文件的更改（这些文件必须已被暂存）。
 
 ---
 
